@@ -17,4 +17,11 @@ The Pima Indians Diabetes dataset contains 8 features related to health indicato
 #### Normalization :
 $$ Z = \frac{x_i - \bar{x}}{\sigma} $$
 
+```python
+sigmoid_Z = 1 / (1 + np.exp(-Z))
+```
+
+```python
+ReLU_Z = np.maximum(0, Z)
+```
 
