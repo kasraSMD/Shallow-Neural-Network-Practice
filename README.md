@@ -32,16 +32,21 @@ $$Z^{[2]}=W^{[2]}A^{[1]}$$
 $$A^{[2]}=\sigma(Z^{[2]})=\frac{1}{1+e^{-Z^{[2]}}}=Y_{pred}$$
 
 
-#### w2 uodate:
+#### w2 update:
 $$W^{[2]} = W^{[2]} + \Delta W^{[2]}$$
 $$\Delta W^{[2]} = - \alpha \frac{\partial cost}{\partial W^{[2]}}$$
 $$\frac{\partial cost}{\partial W^{[2]}} = (\frac{-2}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))\bullet A^{[1]T}$$
 $$W^{[2]}=W^{[2]}+(\frac{2 \alpha}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))\bullet A^{[1]T}$$
 
-#### w1 uodate:
+#### w1 update:
 $$W^{[1]} = W^{[1]} + \Delta W^{[1]}$$
 $$\Delta W^{[1]} = - \alpha \frac{\partial cost}{\partial W^{[1]}}$$
 
 $$\frac{\partial cost}{\partial W^{[1]}} = (((\frac{-2}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))^T\bullet W^{[2]})^T\odot \frac{\partial A^{[1]}}{\partial Z^{[1]}}) \bullet X^T$$
 
 $$W^{[1]}=W^{[1]}+(((\frac{2 \alpha}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))^T\bullet W^{[2]})^T\odot \frac{\partial A^{[1]}}{\partial Z^{[1]}}) \bullet X^T$$
+
+
+```python
+relu_gradient = np.where(A_1 > 0, 1, 0)
+```
