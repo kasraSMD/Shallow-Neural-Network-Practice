@@ -25,3 +25,9 @@ sigmoid_Z = 1 / (1 + np.exp(-Z))
 ReLU_Z = np.maximum(0, Z)
 ```
 
+#### predict(self, inputs) :
+$$Z^{[1]}=W^{[1]}.X$$
+$$A^{[1]}=ReLU(Z^{[1]})$$
+$$Z^{[2]}=W^{[2]}A^{[1]}$$
+$$A^{[2]}=\sigma(Z^{[2]})=\frac{1}{1+e^{-Z^{[2]}}}=Y_{pred}$$
+
