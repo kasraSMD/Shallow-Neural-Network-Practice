@@ -14,7 +14,7 @@ The Pima Indians Diabetes dataset contains 8 features related to health indicato
 4) Evaluate model
 
 ### The mathematical formulas used in this exercise are provided below:
-Normalization :
+#### Normalization :
 $$ Z = \frac{x_i - \bar{x}}{\sigma} $$
 
 
