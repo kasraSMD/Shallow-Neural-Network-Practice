@@ -25,9 +25,23 @@ sigmoid_Z = 1 / (1 + np.exp(-Z))
 ReLU_Z = np.maximum(0, Z)
 ```
 
-#### predict(self, inputs) :
+#### predict(self, inputs):
 $$Z^{[1]}=W^{[1]}.X$$
 $$A^{[1]}=ReLU(Z^{[1]})$$
 $$Z^{[2]}=W^{[2]}A^{[1]}$$
 $$A^{[2]}=\sigma(Z^{[2]})=\frac{1}{1+e^{-Z^{[2]}}}=Y_{pred}$$
 
+
+#### w2 uodate:
+$$W^{[2]} = W^{[2]} + \Delta W^{[2]}$$
+$$\Delta W^{[2]} = - \alpha \frac{\partial cost}{\partial W^{[2]}}$$
+$$\frac{\partial cost}{\partial W^{[2]}} = (\frac{-2}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))\bullet A^{[1]T}$$
+$$W^{[2]}=W^{[2]}+(\frac{2 \alpha}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))\bullet A^{[1]T}$$
+
+#### w1 uodate:
+$$W^{[1]} = W^{[1]} + \Delta W^{[1]}$$
+$$\Delta W^{[1]} = - \alpha \frac{\partial cost}{\partial W^{[1]}}$$
+
+$$\frac{\partial cost}{\partial W^{[1]}} = (((\frac{-2}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))^T\bullet W^{[2]})^T\odot \frac{\partial A^{[1]}}{\partial Z^{[1]}}) \bullet X^T$$
+
+$$W^{[1]}=W^{[1]}+(((\frac{2 \alpha}{n}(Y_{true}-A^{[2]})\odot A^{[2]}\odot (1-A^{[2]}))^T\bullet W^{[2]})^T\odot \frac{\partial A^{[1]}}{\partial Z^{[1]}}) \bullet X^T$$
