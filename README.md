@@ -12,3 +12,5 @@ The Pima Indians Diabetes dataset contains 8 features related to health indicato
 2) Design and implement a shallow neural network.
 3) Train the model on the dataset.
 4) Evaluate model
+
+$$ Z = \frac{x_i - \bar{x}}{\sigma} $$
